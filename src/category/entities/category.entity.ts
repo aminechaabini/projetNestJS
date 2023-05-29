@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Exclude, Expose } from "class-transformer";
-import {Product} from "./product.entity";
+import {Product} from "../../product/entities/product.entity";
 
 @Entity()
 export class Category {
