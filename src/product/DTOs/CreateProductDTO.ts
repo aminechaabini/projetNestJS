@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class AddProductDTO {
+export class CreateProductDTO {
 
     @IsNotEmpty()
     @IsString()

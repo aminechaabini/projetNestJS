@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {Column, DeleteDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import { Exclude, Expose } from "class-transformer";
 import {Product} from "../../product/entities/product.entity";
 
@@ -10,5 +10,7 @@ export class Category {
     name: string;
     @ManyToOne(() => Product,
         (product : Product) => product.category)
-    products : Product
+    products : Product[]
+    @DeleteDateColumn()
+    isDeleted : Date
 }

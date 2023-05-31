@@ -3,26 +3,31 @@ import { Exclude, Expose } from "class-transformer";
 import {Category} from "../../category/entities/category.entity";
 import {Manufacturer} from "../../manufacturer/entities/manufacturer.entity";
 import {Review} from "../../review/entities/review.entity";
+import {Product} from "../../product/entities/product.entity";
+import {ItemOrder} from "../../item-order/entities/item-order.entity";
+import {User} from "../../user/entities/user.entity";
 
 @Entity()
-export class Product {
+export class Order {
     @PrimaryGeneratedColumn('uuid')
     id: string;
+
     @Column()
-    name: string;
+    totalPrice: number;
+
+    @Column() //change to enum
+    paymentMethod: string;
+
     @Column()
-    description: string;
-    @Column()
-    price: number;
-    @OneToMany(() => Category,
-        (category : Category) => category.products)
-    category : Category
-    @OneToMany(() => Manufacturer,
-        (manufacturer : Manufacturer) => manufacturer.products)
-    manufacturer : Manufacturer
-    @OneToMany(() => Review,
-        (review : Review) => review.product)
-    reviews : Review[]
+    shippingAddress: string;
+
+    @OneToMany(() => ItemOrder,
+            orderItem => orderItem.order,)
+    orderItems: ItemOrder[];
+
+    @ManyToOne(() => User, user => user.orders)
+    user: User;
+
     @DeleteDateColumn()
     isDeleted : Date
 
