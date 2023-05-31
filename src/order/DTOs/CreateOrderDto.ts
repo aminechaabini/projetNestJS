@@ -1,3 +1,5 @@
+import {User} from "../../user/entities/user.entity";
+
 export class CreateOrderDto {
     totalPrice: number;
     paymentMethod: string;

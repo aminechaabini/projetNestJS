@@ -14,7 +14,7 @@ export class ItemCart {
     @Column()
     quantity: number;
 
-    @ManyToOne(() => Cart, (cart : Cart) => cart.products)
+    @ManyToOne(() => Cart, (cart : Cart) => cart.cartItems)
     cart : Cart;
 
     @ManyToOne(() => Product, product => product.cartItems)

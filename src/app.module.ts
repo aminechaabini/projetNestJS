@@ -6,7 +6,6 @@ import { CategoryModule } from './category/category.module';
 import { ManufacturerModule } from './manufacturer/manufacturer.module';
 import { ReviewModule } from './review/review.module';
 import { CartModule } from './cart/cart.module';
-import { ControllerController } from './controller/controller.controller';
 import { OrderModule } from './order/order.module';
 import { ItemOrderModule } from './item-order/item-order.module';
 import { ItemCartModule } from './item-cart/item-cart.module';
@@ -15,15 +14,16 @@ import { ItemCartModule } from './item-cart/item-cart.module';
   imports: [    TypeOrmModule.forRoot({
     type: "mysql",
     host: 'localhost',
-    port: 3306,
+    port: 3307,
     username: 'root',
     password: '',
-    database: 'nestgl32023',
+    database: 'ecommerce',
     autoLoadEntities: true,
+    entities: ["dist/**/*.entity{.ts,.js}"],
     synchronize: true,
     logging: true
   }), CategoryModule, ManufacturerModule, ReviewModule, CartModule, OrderModule, ItemOrderModule, ItemCartModule],
-  controllers: [AppController, ControllerController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

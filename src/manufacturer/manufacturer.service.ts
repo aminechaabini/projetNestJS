@@ -21,14 +21,14 @@ export class ManufacturerService {
     }
 
     async getManufacturerById(id: string): Promise<Manufacturer> {
-        const manufacturer = await this.manufacturerRepository.findOne(id, { relations: ['products'] });
+        const manufacturer = await this.manufacturerRepository.findOneBy({id: id});
         if (!manufacturer) {
             throw new NotFoundException('Manufacturer not found');
         }
         return manufacturer;
     }
 
-    async updateManufacturer(id: string, UpdateManufacturerDto: UpdateManufacturerDto): Promise<Manufacturer> {
+    async updateManufacturer(id: string, updateManufacturerDto: UpdateManufacturerDto): Promise<Manufacturer> {
         const manufacturer = await this.getManufacturerById(id);
         this.manufacturerRepository.merge(manufacturer, updateManufacturerDto);
         return this.manufacturerRepository.save(manufacturer);

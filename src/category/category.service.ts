@@ -17,8 +17,8 @@ export class CategoryService {
         return this.categoryRepository.save(category);
     }
 
-    async getCategoryById(id: number): Promise<Category> {
-        const category = await this.categoryRepository.findOne(id);
+    async getCategoryById(id: string): Promise<Category> {
+        const category = await this.categoryRepository.findOneBy({id: id});
         if (!category) {
             throw new NotFoundException('Category not found');
         }
