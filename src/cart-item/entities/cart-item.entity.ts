@@ -4,7 +4,7 @@ import {Product} from "../../product/entities/product.entity";
 import {Cart} from "../../cart/entities/cart.entity";
 
 @Entity()
-export class ItemCart {
+export class CartItem {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -17,6 +17,6 @@ export class ItemCart {
     @ManyToOne(() => Cart, (cart : Cart) => cart.cartItems)
     cart : Cart;
 
-    @ManyToOne(() => Product, product => product.cartItems)
+    @ManyToOne(() => Product)
     product: Product;
 }
